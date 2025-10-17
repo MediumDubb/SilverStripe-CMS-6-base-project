@@ -1,0 +1,59 @@
+{
+    "name": "silverstripe/reports",
+    "type": "silverstripe-vendormodule",
+    "description": "Reports module for SilverStripe CMS",
+    "homepage": "http://silverstripe.org",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "silverstripe",
+        "cms",
+        "reports"
+    ],
+    "authors": [
+        {
+            "name": "SilverStripe",
+            "homepage": "http://silverstripe.com"
+        },
+        {
+            "name": "The SilverStripe Community",
+            "homepage": "http://silverstripe.org"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "silverstripe/framework": "^6",
+        "silverstripe/admin": "^3",
+        "silverstripe/versioned": "^3",
+        "silverstripe/cms": "^6",
+        "silverstripe/config": "^3",
+        "silverstripe/assets": "^3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.3",
+        "silverstripe/taxonomy": "^4",
+        "symbiote/silverstripe-queuedjobs": "^6",
+        "squizlabs/php_codesniffer": "^3.7",
+        "silverstripe/standards": "^1",
+        "silverstripe/documentation-lint": "^1",
+        "phpstan/extension-installer": "^1.3"
+    },
+    "extra": {
+        "expose": [
+            "client/dist"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\Reports\\": "code/",
+            "SilverStripe\\Reports\\Tests\\": "tests/php/",
+            "SilverStripe\\Reports\\Tests\\Behat\\Context\\": "tests/behat/src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

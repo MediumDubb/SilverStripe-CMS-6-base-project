@@ -1,0 +1,226 @@
+<?php
+
+namespace SilverStripe\Forms\HTMLEditor;
+
+use SilverStripe\Assets\Shortcodes\ImageShortcodeProvider;
+use SilverStripe\Forms\FormField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\ORM\DataObjectInterface;
+use Exception;
+use SilverStripe\Model\ModelData;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\View\CastingService;
+use SilverStripe\View\Parsers\HTMLValue;
+
+/**
+ * A WYSIWYG HTML editor field with image and link insertion and tracking capabilities. Editor fields
+ * are created from `<textarea>` tags, which are then converted with JavaScript.
+ *
+ * Caution: The form field does not include any JavaScript or CSS when used outside of the CMS context,
+ * since the required frontend dependencies are included through CMS bundling.
+ */
+class HTMLEditorField extends TextareaField
+{
+
+    private static $casting = [
+        'FormattedValue' => 'HTMLText',
+        'getFormattedValue' => 'HTMLText',
+    ];
+
+    protected $schemaDataType = FormField::SCHEMA_DATA_TYPE_HTML;
+
+    /**
+     * @config
+     * @var string Default alignment for Images and Media. Options: leftAlone|center|left|right
+     */
+    private static $media_alignment = 'leftAlone';
+
+    /**
+     * Should we check the valid_elements (& extended_valid_elements) rules from HTMLEditorConfig server side?
+     *
+     * @config
+     * @var bool
+     */
+    private static $sanitise_server_side = true;
+
+    /**
+     * Number of rows
+     *
+     * @config
+     * @var int
+     */
+    private static $default_rows = 20;
+
+    /**
+     * ID or instance of editorconfig
+     *
+     * @var string|HTMLEditorConfig
+     */
+    protected $editorConfig = null;
+
+    /**
+     * Gets the HTMLEditorConfig instance
+     *
+     * @return HTMLEditorConfig
+     */
+    public function getEditorConfig()
+    {
+        // Instance override
+        if ($this->editorConfig instanceof HTMLEditorConfig) {
+            return $this->editorConfig;
+        }
+
+        // Get named / active config
+        return HTMLEditorConfig::get($this->editorConfig);
+    }
+
+    /**
+     * Assign a new configuration instance or identifier
+     *
+     * @param string|HTMLEditorConfig $config
+     * @return $this
+     */
+    public function setEditorConfig($config)
+    {
+        $this->editorConfig = $config;
+        return $this;
+    }
+
+    public function getSchemaComponent()
+    {
+        return $this->getEditorConfig()->getSchemaComponent();
+    }
+
+    /**
+     * Creates a new HTMLEditorField.
+     * @see TextareaField::__construct()
+     *
+     * @param string $name The internal field name, passed to forms.
+     * @param string $title The human-readable field label.
+     * @param mixed $value The value of the field.
+     * @param string $config HTMLEditorConfig identifier to be used. Default to the active one.
+     */
+    public function __construct($name, $title = null, $value = '', $config = null)
+    {
+        parent::__construct($name, $title, $value);
+
+        if ($config) {
+            $this->setEditorConfig($config);
+        }
+
+        $this->setRows(HTMLEditorField::config()->default_rows);
+    }
+
+    public function getAttributes()
+    {
+        $config = $this->setEditorHeight($this->getEditorConfig());
+
+        // Merge attributes
+        return array_merge(
+            parent::getAttributes(),
+            $config->getAttributes()
+        );
+    }
+
+    public function saveInto(DataObjectInterface $record)
+    {
+        if (!$this->usesXmlFriendlyField($record)) {
+            throw new Exception(
+                'HTMLEditorField->saveInto(): This field should save into a HTMLText or HTMLVarchar field.'
+            );
+        }
+
+        // Sanitise if requested
+        $htmlValue = HTMLValue::create($this->getValue());
+        if (static::config()->get('sanitise_server_side')) {
+            $config = $this->getEditorConfig();
+            $santiser = HTMLEditorSanitiser::create($config);
+            $santiser->sanitise($htmlValue);
+        }
+
+        // optionally manipulate the HTML prior to storing it on the record
+        $this->extend('processHTML', $htmlValue);
+
+        // Store into record
+        $record->{$this->name} = $htmlValue->getContent();
+    }
+
+    public function setValue($value, $data = null)
+    {
+        // Regenerate links prior to preview, so that the editor can see them.
+        $value = ImageShortcodeProvider::regenerate_html_links($value);
+        return parent::setValue($value);
+    }
+
+    /**
+     * @return HTMLEditorField_Readonly
+     */
+    public function performReadonlyTransformation()
+    {
+        return $this->castedCopy(HTMLEditorField_Readonly::class);
+    }
+
+    public function performDisabledTransformation()
+    {
+        return $this->performReadonlyTransformation();
+    }
+
+    public function Field($properties = [])
+    {
+        // Include requirements
+        $this->getEditorConfig()->init();
+        return parent::Field($properties);
+    }
+
+    public function getSchemaStateDefaults()
+    {
+        $stateDefaults = parent::getSchemaStateDefaults();
+        $config = $this->setEditorHeight($this->getEditorConfig());
+        $stateDefaults['data'] = $config->getConfigSchemaData();
+        return $stateDefaults;
+    }
+
+    /**
+     * Return formatted value with all values encoded in html entities
+     */
+    public function getFormattedValueEntities(): string
+    {
+        $entities = get_html_translation_table(HTML_ENTITIES);
+
+        foreach ($entities as $key => $value) {
+            $entities[$key] = "/" . $value . "/";
+        }
+
+        $formattedValue = preg_replace_callback($entities, function ($matches) {
+            // Don't apply double encoding to ampersand
+            $doubleEncoding = $matches[0] != '&amp;';
+            return htmlentities($matches[0], ENT_COMPAT, 'UTF-8', $doubleEncoding);
+        }, $this->getFormattedValue() ?? '');
+
+        return $formattedValue;
+    }
+
+    /**
+     * Set height of editor based on number of rows.
+     *
+     * This uses a clone because different HMTLEditorField instances may use different number of rows
+     * and the config is a singleton.
+     */
+    private function setEditorHeight(HTMLEditorConfig $config): HTMLEditorConfig
+    {
+        $clone = clone $config;
+        $clone->setRows($this->rows);
+        return $clone;
+    }
+
+    private function usesXmlFriendlyField(DataObjectInterface $record): bool
+    {
+        if ($record instanceof ModelData && !$record->hasField($this->getName())) {
+            return true;
+        }
+
+        $castingService = CastingService::singleton();
+        $castValue = $castingService->cast($this->getValue(), $record, $this->getName());
+        return $castValue instanceof DBField && $castValue::config()->get('escape_type') === 'xml';
+    }
+}

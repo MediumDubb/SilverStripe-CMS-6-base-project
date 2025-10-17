@@ -1,0 +1,47 @@
+{
+    "name": "unclecheese/display-logic",
+    "replace": {
+        "silverstripe/display-logic": "*"
+    },
+    "description": "Allows assignment of conditions for display and hide of specific form fields based on client side behavior.",
+    "type": "silverstripe-vendormodule",
+    "keywords": ["silverstripe", "display", "logic", "forms", "cms"],
+    "license": "BSD-3-Clause",
+    "authors": [
+    {
+        "name": "Uncle Cheese",
+        "email": "unclecheese@leftandmain.com"
+    }
+    ],
+    "require":
+    {
+        "php": "^8.3",
+        "silverstripe/framework": "^6.0"
+    },
+    "require-dev": {
+        "silverstripe/recipe-testing": "^4.0",
+        "silverstripe/behat-extension": "^6.0"
+    },
+    "extra": {
+        "installer-name": "display-logic",
+        "expose": [
+            "client"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "UncleCheese\\DisplayLogic\\": "src/",
+            "UncleCheese\\DisplayLogic\\Tests\\": "tests/php/",
+            "UncleCheese\\DisplayLogic\\Tests\\Behaviour\\": "tests/behat/src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true,
+            "silverstripe/recipe-plugin": true
+        }
+    }
+}

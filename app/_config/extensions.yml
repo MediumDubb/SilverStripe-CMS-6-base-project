@@ -1,0 +1,3 @@
+DNADesign\ElementalUserForms\Model\ElementForm:
+  extensions:
+    - InnisMaggiore\InnisMaggioreTheme\extensions\ElementFormExtension

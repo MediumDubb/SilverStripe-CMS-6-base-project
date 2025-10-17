@@ -1,0 +1,9 @@
+---
+Name: splash-routes
+After:
+  - '#rootroutes'
+  - '#coreroutes'
+---
+SilverStripe\Control\Director:
+  rules:
+    #'example/path': 'InnisMaggiore\InnisMaggioreTheme\controllers\<ExampleController>'

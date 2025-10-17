@@ -1,0 +1,6 @@
+---
+Name: my-userform
+After: '#myproject'
+---
+SilverStripe\UserForms\Model\UserDefinedForm:
+  upgrade_on_build: false

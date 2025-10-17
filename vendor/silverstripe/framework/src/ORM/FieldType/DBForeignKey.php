@@ -1,0 +1,79 @@
+<?php
+
+namespace SilverStripe\ORM\FieldType;
+
+use SilverStripe\Core\Validation\FieldValidation\IntFieldValidator;
+use SilverStripe\Forms\FormField;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Model\ModelData;
+
+/**
+ * A special type Int field used for foreign keys in has_one relationships.
+ * @uses ImageField
+ * @uses SimpleImageField
+ * @uses FileIFrameField
+ * @uses DropdownField
+ *
+ * @param string $name
+ * @param DataObject $object The object that the foreign key is stored on (should have a relation with $name)
+ */
+class DBForeignKey extends DBInt
+{
+    protected ?DataObject $object;
+
+    private static array $field_validators = [
+        IntFieldValidator::class => [
+            'minValue' => 'getMinValue',
+        ],
+    ];
+
+    /**
+     * Number of related objects to show in a scaffolded searchable dropdown field before it
+     * switches to using lazyloading.
+     * This will also be used as the lazy load limit
+     */
+    private static int $dropdown_field_threshold = 100;
+
+    private static string|bool $index = true;
+
+    private static string $default_search_filter_class = 'ExactMatchFilter';
+
+    public function __construct(?string $name, ?DataObject $object = null)
+    {
+        $this->object = $object;
+        parent::__construct($name);
+    }
+
+    public function scaffoldFormField(?string $title = null, array $params = []): ?FormField
+    {
+        if (empty($this->object)) {
+            return null;
+        }
+        $relationName = substr($this->name ?? '', 0, -2);
+        $hasOneClass = DataObject::getSchema()->hasOneComponent(get_class($this->object), $relationName);
+        if (empty($hasOneClass)) {
+            return null;
+        }
+        $hasOneSingleton = singleton($hasOneClass);
+        $field = $hasOneSingleton->scaffoldFormFieldForHasOne($this->name, $title, $relationName, $this->object);
+        return $field;
+    }
+
+    public function setValue(mixed $value, null|array|ModelData $record = null, bool $markChanged = true): static
+    {
+        if ($record instanceof DataObject) {
+            $this->object = $record;
+        }
+        // Convert blank string to 0, this is sometimes required when calling DataObject::setCastedValue()
+        // after a form submission where the value is a blank string when no value is selected
+        if ($value === '') {
+            $value = 0;
+        }
+        return parent::setValue($value, $record, $markChanged);
+    }
+
+    public static function getMinValue(): int
+    {
+        return 0;
+    }
+}

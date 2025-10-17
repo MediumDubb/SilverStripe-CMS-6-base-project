@@ -1,0 +1,136 @@
+{
+    "name": "silverstripe/framework",
+    "type": "silverstripe-vendormodule",
+    "description": "The SilverStripe framework",
+    "homepage": "http://silverstripe.org",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "silverstripe",
+        "framework"
+    ],
+    "authors": [
+        {
+            "name": "SilverStripe",
+            "homepage": "http://silverstripe.com"
+        },
+        {
+            "name": "The SilverStripe Community",
+            "homepage": "http://silverstripe.org"
+        }
+    ],
+    "bin": [
+        "bin/sake"
+    ],
+    "require": {
+        "php": "^8.3",
+        "composer-runtime-api": "^2.0",
+        "composer/installers": "^2.3",
+        "guzzlehttp/guzzle": "^7.9",
+        "guzzlehttp/psr7": "^2.7",
+        "embed/embed": "^4.4.7",
+        "greenlion/php-sql-parser": "^4.7.0",
+        "league/csv": "^9.18",
+        "m1/env": "^2.2.0",
+        "masterminds/html5": "^2.9",
+        "monolog/monolog": "^3.8",
+        "nikic/php-parser": "^5.3",
+        "psr/container": "^2.0",
+        "psr/http-message": "^2.0",
+        "sebastian/diff": "^6.0",
+        "sensiolabs/ansi-to-html": "^1.2",
+        "silverstripe/config": "^3",
+        "silverstripe/assets": "^3",
+        "silverstripe/supported-modules": "^2",
+        "silverstripe/template-engine": "^1",
+        "silverstripe/vendor-plugin": "^3",
+        "sminnee/callbacklist": "^0.1.1",
+        "symfony/cache": "^7.1.5",
+        "symfony/config": "^7.0",
+        "symfony/console": "^7.0",
+        "symfony/dom-crawler": "^7.0",
+        "symfony/filesystem": "^7.1",
+        "symfony/finder": "^7.0",
+        "symfony/http-foundation": "^7.0",
+        "symfony/intl": "^7.0",
+        "symfony/mailer": "^7.0",
+        "symfony/mime": "^7.0",
+        "symfony/translation": "^7.0",
+        "symfony/validator": "^7.2",
+        "symfony/yaml": "^7.0",
+        "ext-ctype": "*",
+        "ext-dom": "*",
+        "ext-hash": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-session": "*",
+        "ext-simplexml": "*",
+        "ext-tokenizer": "*",
+        "ext-xml": "*"
+    },
+    "require-dev": {
+        "composer/semver": "^3.4",
+        "phpunit/phpunit": "^11.3",
+        "silverstripe/versioned": "^3",
+        "squizlabs/php_codesniffer": "^3.7",
+        "silverstripe/standards": "^1",
+        "phpstan/extension-installer": "^1.3"
+    },
+    "conflict": {
+        "egulias/email-validator": "<3.2.1",
+        "silverstripe/behat-extension": "<5.5",
+        "oscarotero/html-parser": "<0.1.7",
+        "symfony/process": "<5.3.7"
+    },
+    "provide": {
+        "psr/container-implementation": "1.0.0"
+    },
+    "extra": {
+        "expose": [
+            "client/images",
+            "client/styles"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\Cli\\": "src/Cli/",
+            "SilverStripe\\Cli\\Tests\\": "tests/php/Cli/",
+            "SilverStripe\\Control\\": "src/Control/",
+            "SilverStripe\\Control\\Tests\\": "tests/php/Control/",
+            "SilverStripe\\Core\\": "src/Core/",
+            "SilverStripe\\Core\\Tests\\": "tests/php/Core/",
+            "SilverStripe\\Dev\\": "src/Dev/",
+            "SilverStripe\\Dev\\Tests\\": "tests/php/Dev/",
+            "SilverStripe\\Forms\\": "src/Forms/",
+            "SilverStripe\\Forms\\Tests\\": "tests/php/Forms/",
+            "SilverStripe\\i18n\\": "src/i18n/",
+            "SilverStripe\\i18n\\Tests\\": "tests/php/i18n/",
+            "SilverStripe\\Logging\\": "src/Logging/",
+            "SilverStripe\\Logging\\Tests\\": "tests/php/Logging/",
+            "SilverStripe\\Model\\": "src/Model/",
+            "SilverStripe\\Model\\Tests\\": "tests/php/Model/",
+            "SilverStripe\\ORM\\": "src/ORM/",
+            "SilverStripe\\ORM\\Tests\\": "tests/php/ORM/",
+            "SilverStripe\\PolyExecution\\": "src/PolyExecution/",
+            "SilverStripe\\PolyExecution\\Tests\\": "tests/php/PolyExecution/",
+            "SilverStripe\\Security\\": "src/Security/",
+            "SilverStripe\\Security\\Tests\\": "tests/php/Security/",
+            "SilverStripe\\View\\": "src/View/",
+            "SilverStripe\\View\\Tests\\": "tests/php/View/",
+            "SilverStripe\\Framework\\Tests\\Behaviour\\": "tests/behat/src/"
+        },
+        "files": [
+            "src/includes/constants.php"
+        ]
+    },
+    "include-path": [
+        "thirdparty/"
+    ],
+    "scripts": {
+        "lint": "phpcs src/ tests/php/ tests/behat/src/",
+        "lint-clean": "phpcbf src/ tests/php/ tests/behat/src/",
+        "php-peg": "php thirdparty/php-peg/cli.php src/View/SSTemplateParser.peg > src/View/SSTemplateParser.php"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

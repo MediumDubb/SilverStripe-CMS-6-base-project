@@ -1,0 +1,15 @@
+---
+Name: my-elemental
+After: '#myproject'
+Only:
+  moduleexists:
+    - 'dnadesign/silverstripe-elemental'
+    - 'dnadesign/silverstripe-elemental-userforms'
+---
+InnisMaggiore\InnisMaggioreTheme\pagetypes\ComponentPage:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+  disallowed_elements:
+    - DNADesign\Elemental\Models\ElementContent
+    - InnisMaggiore\InnisMaggioreTheme\elements\BasePanel
+

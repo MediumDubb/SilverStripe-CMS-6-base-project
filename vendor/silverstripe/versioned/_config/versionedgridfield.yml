@@ -1,0 +1,16 @@
+---
+Name: versionedgridfield
+---
+SilverStripe\Forms\GridField\GridFieldDetailForm:
+  extensions:
+    - SilverStripe\Versioned\VersionedGridFieldDetailForm
+# Add status row to gridfields by default
+SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor:
+  extensions:
+    - SilverStripe\Versioned\VersionedGridFieldArchiveExtension
+SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor:
+  extensions:
+    - SilverStripe\Versioned\VersionedGridFieldArchiveExtension
+# Enable gridfield extensions for dataobjects by default
+SilverStripe\ORM\DataObject:
+  versioned_gridfield_extensions: true

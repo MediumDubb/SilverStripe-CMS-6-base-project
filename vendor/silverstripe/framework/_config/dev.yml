@@ -1,0 +1,21 @@
+---
+Name: DevelopmentAdmin
+---
+SilverStripe\Dev\DevelopmentAdmin:
+  commands:
+    build: 'SilverStripe\Dev\Command\DbBuild'
+    'build/cleanup': 'SilverStripe\Dev\Command\DbCleanup'
+    'build/defaults': 'SilverStripe\Dev\Command\DbDefaults'
+    config: 'SilverStripe\Dev\Command\ConfigDump'
+    'config/audit': 'SilverStripe\Dev\Command\ConfigAudit'
+    generatesecuretoken: 'SilverStripe\Dev\Command\GenerateSecureToken'
+  controllers:
+    tasks:
+      class: 'SilverStripe\Dev\TaskRunner'
+      description: 'See a list of build tasks to run'
+    confirm:
+      class: 'SilverStripe\Dev\DevConfirmationController'
+      skipLink: true
+
+SilverStripe\Dev\CSSContentParser:
+  disable_xml_external_entities: true
