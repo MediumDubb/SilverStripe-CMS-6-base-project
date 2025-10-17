@@ -5,10 +5,28 @@
 
 Base project folder for a Silverstripe ([http://silverstripe.org](http://silverstripe.org)) installation. Required modules are installed via [http://github.com/silverstripe/recipe-cms](http://github.com/silverstripe/recipe-cms). For information on how to change the dependencies in a recipe, please have a look at [https://github.com/silverstripe/recipe-plugin](https://github.com/silverstripe/recipe-plugin). In addition, installer includes [silverstripe/startup-theme](https://github.com/silverstripe/startup-theme) as a default theme.
 
+## Instructions for Base CMS 6.1 project
+
+Use your IDE file contents search functionality to find these strings `InnisMaggioreTheme` & `innismaggioretheme` & `<replace>` and replace them with propper values
+
+Rename `themes/innismaggioretheme` to your desired theme name, update the theme composer.json and README as needed
+
+Once files and directories are updated and the project is running locally, remove the git repo in the project and set it to a new origin
+
 ## Installation
 
 ```sh
 composer create-project silverstripe/installer my-app
+```
+
+## Mac user notes:
+
+There is a build script for some vendor packages in the composer.json file. Only works on unix based machines... Sorry windows guys :(
+
+## Sassy Compilation ##
+
+```sh
+  sass --watch themes/<replace>/css/src/styles.scss:themes/<replace>/css/dist/styles.min.css --style compressed
 ```
 
 See [Getting Started](https://docs.silverstripe.org/en/getting_started/) for more information.
