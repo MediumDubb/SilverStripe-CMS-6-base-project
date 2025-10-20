@@ -15,7 +15,7 @@
         "components/jquery": "3.6",
         "dnadesign/silverstripe-elemental": "^6.0",
         "innis-maggiore/silverstripe-social-meta-tags": "^6.0",
-        "innis-maggiore/silverstripe-smtp-tester": "^6.0",
+        "innis-maggiore/silverstripe-smtp-<replace-theme>er": "^6.0",
         "innis-maggiore/silverstripe-content-extensions": "^6.0",
         "undefinedoffset/sortablegridfield": "^3.0",
         "wilr/silverstripe-googlesitemaps": "^4.0",
@@ -59,10 +59,13 @@
         "expose-theme-vendor": [
             "mkdir -p themes/<replace-theme>/js/vendor",
             "mkdir -p themes/<replace-theme>/css/dist",
+            "mkdir -p themes/<replace-theme>/css/dist/font-awesome",
+            "mkdir -p themes/<replace-theme>/css/dist/font-awesome/dist",
 
             "cp vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js themes/<replace-theme>/js/vendor",
             "cp vendor/twbs/bootstrap/dist/css/bootstrap.min.css themes/<replace-theme>/css/dist",
-            "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/css/all.min.css themes/<replace-theme>/css/dist/fontawesome.min.css",
+            "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/css/all.min.css themes/<replace-theme>/css/dist/font-awesome/dist/fontawesome.min.css",
+            "cp -R vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/webfonts themes/<replace-theme>/css/dist/font-awesome/",
             "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/js/all.min.js themes/<replace-theme>/js/vendor/fontawesome.min.js",
             "cp vendor/components/jquery/jquery.min.js themes/<replace-theme>/js/vendor"
         ]

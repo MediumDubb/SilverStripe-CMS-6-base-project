@@ -32,7 +32,7 @@ namespace {
         {
 
             Requirements::themedCSS("dist/bootstrap.min");
-            Requirements::themedCSS("dist/fontawesome.min");
+            Requirements::themedCSS("dist/font-awesome/dist/fontawesome.min");
             Requirements::themedCSS("dist/aos.min");
             Requirements::themedCSS('dist/styles.min');
 
@@ -40,7 +40,7 @@ namespace {
             Requirements::themedJavascript("vendor/bootstrap.bundle.min");
             Requirements::themedJavascript("vendor/fontawesome.min");
             Requirements::themedJavascript("vendor/aos.min");
-            Requirements::themedJavascript("vendor/slick.min");
+            Requirements::themedJavascript("vendor/slick/slick.min");
             Requirements::themedJavascript('global');
 
             parent::init();
