@@ -16,7 +16,7 @@ class BasePanel extends BaseElement
     private static $plural_name = "Base Panels";
     private static $inline_editable = false;
     private static bool $displays_title_in_template = false;
-    private const IMAGE_PATH = '/_resources/<replace-theme>/splash/images/';
+    private const IMAGE_PATH = '/_resources/themes/<replace-theme>/images/';
 
     private static $db = [
         "Hide"                  => "Boolean",
