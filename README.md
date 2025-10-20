@@ -11,7 +11,7 @@ Base project folder for a Silverstripe ([http://silverstripe.org](http://silvers
 composer create-project silverstripe/installer my-app
 ```
 
-## Instructions for Base CMS 6.1 project
+## Instructions for Base CMS 6.1 project  * REMOVE THIS SECTION FROM README AFTER COMPLETING BELOW
 
 1. Use your IDE file contents search-replace functionality to find these strings - remove `#` from strings:
     * pSR-4 Namespacing in composer.json`<#replace-org>\\<#replace-psr-theme>`
