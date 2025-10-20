@@ -140,7 +140,6 @@ return array(
     'InnisMaggiore\\SilverstripeSocialMetaTags\\' => array($vendorDir . '/innis-maggiore/silverstripe-social-meta-tags/src'),
     'InnisMaggiore\\SilverstripeSMTPTester\\' => array($vendorDir . '/innis-maggiore/silverstripe-smtp-tester/src'),
     'InnisMaggiore\\SilverstripeContentExtensions\\' => array($vendorDir . '/innis-maggiore/silverstripe-content-extensions/src'),
-    'InnisMaggiore\\InnisMaggioreTheme\\' => array($baseDir . '/app/src'),
     'HtmlParser\\' => array($vendorDir . '/oscarotero/html-parser/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
@@ -159,4 +158,5 @@ return array(
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
     'Bummzack\\SortableFile\\Tests\\' => array($vendorDir . '/bummzack/sortablefile/tests/php'),
     'Bummzack\\SortableFile\\' => array($vendorDir . '/bummzack/sortablefile/src'),
+    '<replace-org>\\<replace-psr-theme>\\' => array($baseDir . '/app/src'),
 );

@@ -184,7 +184,6 @@ class ComposerStaticInit17788bd4c3bbc9bd2da735da04c037d1
             'InnisMaggiore\\SilverstripeSocialMetaTags\\' => 41,
             'InnisMaggiore\\SilverstripeSMTPTester\\' => 37,
             'InnisMaggiore\\SilverstripeContentExtensions\\' => 44,
-            'InnisMaggiore\\InnisMaggioreTheme\\' => 33,
         ),
         'H' => 
         array (
@@ -221,6 +220,10 @@ class ComposerStaticInit17788bd4c3bbc9bd2da735da04c037d1
         array (
             'Bummzack\\SortableFile\\Tests\\' => 28,
             'Bummzack\\SortableFile\\' => 22,
+        ),
+        '<' => 
+        array (
+            '<replace-org>\\<replace-psr-theme>\\' => 34,
         ),
     );
 
@@ -765,10 +768,6 @@ class ComposerStaticInit17788bd4c3bbc9bd2da735da04c037d1
         array (
             0 => __DIR__ . '/..' . '/innis-maggiore/silverstripe-content-extensions/src',
         ),
-        'InnisMaggiore\\InnisMaggioreTheme\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src',
-        ),
         'HtmlParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/oscarotero/html-parser/src',
@@ -840,6 +839,10 @@ class ComposerStaticInit17788bd4c3bbc9bd2da735da04c037d1
         'Bummzack\\SortableFile\\' => 
         array (
             0 => __DIR__ . '/..' . '/bummzack/sortablefile/src',
+        ),
+        '<replace-org>\\<replace-psr-theme>\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/src',
         ),
     );
 

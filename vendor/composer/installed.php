@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'silverstripe/installer',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '4bbebaecf4b723b4abd840c0ca0575417097a852',
         'type' => 'silverstripe-recipe',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -788,9 +788,9 @@
             'dev_requirement' => false,
         ),
         'silverstripe/installer' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '4bbebaecf4b723b4abd840c0ca0575417097a852',
             'type' => 'silverstripe-recipe',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
