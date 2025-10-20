@@ -57,14 +57,14 @@
     },
     "scripts": {
         "expose-theme-vendor": [
-            "mkdir -p themes/innismaggioretheme/js/vendor",
-            "mkdir -p themes/innismaggioretheme/css/dist",
+            "mkdir -p themes/<replace-theme>/js/vendor",
+            "mkdir -p themes/<replace-theme>/css/dist",
 
-            "cp vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js themes/innismaggioretheme/js/vendor",
-            "cp vendor/twbs/bootstrap/dist/css/bootstrap.min.css themes/innismaggioretheme/css/dist",
-            "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/css/all.min.css themes/innismaggioretheme/css/dist/fontawesome.min.css",
-            "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/js/all.min.js themes/innismaggioretheme/js/vendor/fontawesome.min.js",
-            "cp vendor/components/jquery/jquery.min.js themes/innismaggioretheme/js/vendor"
+            "cp vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js themes/<replace-theme>/js/vendor",
+            "cp vendor/twbs/bootstrap/dist/css/bootstrap.min.css themes/<replace-theme>/css/dist",
+            "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/css/all.min.css themes/<replace-theme>/css/dist/fontawesome.min.css",
+            "cp vendor/fortawesome/font-awesome/js-packages/@fortawesome/fontawesome-free/js/all.min.js themes/<replace-theme>/js/vendor/fontawesome.min.js",
+            "cp vendor/components/jquery/jquery.min.js themes/<replace-theme>/js/vendor"
         ]
     },
     "autoload": {
