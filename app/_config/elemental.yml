@@ -6,7 +6,7 @@ Only:
     - 'dnadesign/silverstripe-elemental'
     - 'dnadesign/silverstripe-elemental-userforms'
 ---
-InnisMaggiore\InnisMaggioreTheme\pagetypes\ComponentPage:
+<replace-org>\<replace-psr-theme>\pagetypes\ComponentPage:
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
   disallowed_elements:
