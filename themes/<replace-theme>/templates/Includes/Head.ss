@@ -11,7 +11,7 @@
     <% if $SiteConfig.Favicon %>
         <link rel="shortcut icon" href="{$SiteConfig.Favicon.ScaleMaxWidth(128).Link()}" />
     <% else %>
-        <link rel="shortcut icon" href="{$resourceURL('themes/splash/images/favicon.ico')}" />
+        <link rel="shortcut icon" href="{$resourceURL('themes/<replace-theme>/images/favicon.ico')}" />
     <% end_if %>
     <% include GoogleFonts %>
     <% include Favicons %>

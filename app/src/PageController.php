@@ -37,7 +37,7 @@ namespace {
             Requirements::themedCSS('dist/styles.min');
 
             Requirements::themedJavascript('vendor/jquery.min');
-            Requirements::themedJavascript("vendor/bootstrap.min");
+            Requirements::themedJavascript("vendor/bootstrap.bundle.min");
             Requirements::themedJavascript("vendor/fontawesome.min");
             Requirements::themedJavascript("vendor/aos.min");
             Requirements::themedJavascript("vendor/slick.min");
