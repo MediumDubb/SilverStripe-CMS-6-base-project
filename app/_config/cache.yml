@@ -7,4 +7,4 @@ SilverStripe\Core\Injector\Injector:
     factory: SilverStripe\Core\Cache\CacheFactory
     constructor:
       defaultLifetime: 900 # 15 minutes
-      namespace: "themeCache"
+      namespace: "<replace-themeCache>"

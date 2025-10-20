@@ -1,6 +1,6 @@
 <?php
 
-namespace InnisMaggiore\InnisMaggioreTheme\pagetypes;
+namespace <replace-org>\<replace-psr-theme>\pagetypes;
 
 use SilverStripe\Forms\FieldList;
 

@@ -6,4 +6,4 @@ After:
 ---
 SilverStripe\Control\Director:
   rules:
-    #'example/path': 'InnisMaggiore\InnisMaggioreTheme\controllers\<ExampleController>'
+    #'example/path': '<replace-org>\<replace-psr-theme>\controllers\<ExampleController>'

@@ -1,6 +1,6 @@
 <?php
 
-namespace InnisMaggiore\InnisMaggioreTheme\elements;
+namespace <replace-org>\<replace-psr-theme>\elements;
 
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\CheckboxField;
@@ -16,7 +16,7 @@ class BasePanel extends BaseElement
     private static $plural_name = "Base Panels";
     private static $inline_editable = false;
     private static bool $displays_title_in_template = false;
-    private const IMAGE_PATH = '/_resources/themes/splash/images/';
+    private const IMAGE_PATH = '/_resources/<replace-theme>/splash/images/';
 
     private static $db = [
         "Hide"                  => "Boolean",

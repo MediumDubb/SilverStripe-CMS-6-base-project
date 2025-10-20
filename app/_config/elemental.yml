@@ -11,5 +11,5 @@ InnisMaggiore\InnisMaggioreTheme\pagetypes\ComponentPage:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
   disallowed_elements:
     - DNADesign\Elemental\Models\ElementContent
-    - InnisMaggiore\InnisMaggioreTheme\elements\BasePanel
+    - <replace-org>\<replace-psr-theme>\elements\BasePanel
 

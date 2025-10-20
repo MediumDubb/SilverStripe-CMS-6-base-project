@@ -13,15 +13,23 @@ composer create-project silverstripe/installer my-app
 
 ## Instructions for Base CMS 6.1 project
 
-1. Use your IDE file contents search functionality to find these strings `InnisMaggioreTheme` & `innismaggioretheme` & `<replace>` and replace them with propper values
+1. Use your IDE file contents search-replace functionality to find these strings - remove `#` from strings:
+    * pSR-4 Namespacing in composer.json`<#replace-org>\\<#replace-psr-theme>`
+    * pSR-4 Namespacing in app `<#replace-org>\<#replace-psr-theme>`
+    * namespacing for cache yml `<#replace-themeCache>`
+    * theme references `<#replace-theme>`
+    * recaptcha `<#replace-sitekey>`, `<#replace-secretkey>`
+    * .env `<#replace-db-user>`, `<#replace-db-pw>`, `<#replace-db-name>`
+   
+2. Rename `themes/<#replace-theme>` to your desired theme name, update the theme composer.json and README as needed
 
-2. Rename `themes/<theme>` to your desired theme name, update the theme composer.json and README as needed
-
-3. Rename `themes/<theme>/templates/InnisMaggiore/<psr4-theme>` to propper name spacing
-
+3. Rename `themes/<#replace-theme>/templates/<#replace-org>/<#replace-psr-theme>` to propper name spacing
+   
 4. Once files and directories are updated and the project is running locally, remove the git repo in the project and set it to a new origin
 
 5. Run your expose script(s)
+
+6. Dev Build
 
 ## Mac user notes:
 
@@ -30,7 +38,7 @@ There is a build script for some vendor packages in the composer.json file. Only
 ## Sassy Compilation ##
 
 ```sh
-  sass --watch themes/<replace>/css/src/styles.scss:themes/<replace>/css/dist/styles.min.css --style compressed
+  sass --watch themes/<replace-theme>/css/src/styles.scss:themes/<replace-theme>/css/dist/styles.min.css --style compressed
 ```
 
 See [Getting Started](https://docs.silverstripe.org/en/getting_started/) for more information.

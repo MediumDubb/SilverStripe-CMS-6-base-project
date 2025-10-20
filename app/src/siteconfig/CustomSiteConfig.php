@@ -1,6 +1,6 @@
 <?php
 
-namespace InnisMaggiore\InnisMaggioreTheme\siteconfig;
+namespace <replace-org>\<replace-psr-theme>\siteconfig;
 
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;

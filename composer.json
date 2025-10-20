@@ -69,7 +69,7 @@
     },
     "autoload": {
         "psr-4": {
-            "InnisMaggiore\\InnisMaggioreTheme\\": "app/src/"
+            "<replace-org>\\<replace-psr-theme>\\": "app/src/"
         }
     },
     "prefer-stable": true,

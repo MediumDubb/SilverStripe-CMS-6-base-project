@@ -3,4 +3,4 @@ Name: custom-editor-styles
 ---
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:
-    - '_resources/themes/splash/css/dist/editor.css'
+    - '_resources/themes/<replace-theme>/css/dist/editor.css'
