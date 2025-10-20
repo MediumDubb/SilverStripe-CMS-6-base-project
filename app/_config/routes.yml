@@ -1,9 +1,9 @@
----
-Name: splash-routes
-After:
-  - '#rootroutes'
-  - '#coreroutes'
----
-SilverStripe\Control\Director:
-  rules:
-    #'example/path': '<replace-org>\<replace-psr-theme>\controllers\<ExampleController>'
+#---
+#Name: <replace-theme>-routes
+#After:
+#  - '#rootroutes'
+#  - '#coreroutes'
+#---
+#SilverStripe\Control\Director:
+#  rules:
+#    'example/path': '<replace-org>\<replace-psr-theme>\controllers\<ExampleController>'
